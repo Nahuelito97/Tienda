@@ -15,7 +15,7 @@ class CategoryController extends Controller
         return view('admin.category.index', compact('categories'));
 
     }
-//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
+
 
     public function create()
     {

@@ -16,7 +16,7 @@ class ProductController extends Controller
         return view('admin.product.index', compact('products'));
 
     }
-//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
+
 
     public function create()
     {

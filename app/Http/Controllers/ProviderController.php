@@ -14,7 +14,6 @@ class ProviderController extends Controller
         return view('admin.Provider.index', compact('providers'));
 
     }
-//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
 
     public function create()
     {
