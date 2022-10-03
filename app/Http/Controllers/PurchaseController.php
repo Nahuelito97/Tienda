@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Purchase;
+use App\Provider;
 use App\Http\Requests\Purchase\StoreRequest;
 use App\Http\Requests\Purchase\UpdateRequest;
-use App\Provider;
+
 
 class PurchaseController extends Controller
 {
@@ -25,7 +26,13 @@ class PurchaseController extends Controller
 
     public function store(StoreRequest $request)
     {
-        $purchase = Purchase::crate($request->all());
+        $purchase = Purchase::create($request->all());
+
+        foreach ($request->product_id as $key => $product) {
+            $results[] = array("product_id"=>$request->product_id[$key],
+            "quantity"=>$request->quantity[$key], "price"=>$request->price[$key]);
+        }
+        $purchase->purchaseDetails()->createMany($results);
         return redirect()->route('purchases.index');
     }
 
@@ -44,13 +51,13 @@ class PurchaseController extends Controller
 
     public function update(UpdateRequest $request, Purchase $purchase)
     {
-      $purchase->update($request->all());
-      return redirect()->route('Purchases.index');
+      //$purchase->update($request->all());
+      //return redirect()->route('Purchases.index');
     }
 
 
-    public function destroy(Purchase $Purchase)
+    public function destroy(Purchase $purchase)
     {
-        $Purchase->delete();
+        //$purchase->delete();
     }
 }
