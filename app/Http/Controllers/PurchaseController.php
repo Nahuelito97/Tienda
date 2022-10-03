@@ -49,6 +49,11 @@ class PurchaseController extends Controller
     }
 
 
+
+
+
+    //Nahuelitoooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
     public function update(UpdateRequest $request, Purchase $purchase)
     {
       //$purchase->update($request->all());
